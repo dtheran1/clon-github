@@ -1,0 +1,19 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    background: rgb(37, 37, 37);
+  
+}
+
+.clearfix {
+  float: none;
+  clear: both;
+}
+
+#app {
+  text-align: center;
+  color: #1ca37b;
+}
