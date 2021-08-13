@@ -1,8 +1,8 @@
 <template>
   <div id="nav">
     <ul>
-      <img src="../assets/logogit.png" alt="" />
-      <li><input type="search" placeholder="Search by user... " /></li>
+      <img src="../assets/logogit.png" alt="logo" width="100%" ref="#"/>
+      <input type="search" placeholder="   Search by user... " />
       <li><router-link to="/">Home</router-link></li>
       <li>
         <router-link to="/repositorios">Repositorios</router-link>
@@ -26,29 +26,38 @@ export default {};
   border-radius: 5px;
   font-size: 15px;
   box-shadow: 0 0 10px 1px rgb(19, 19, 19);
+  
 }
 
 #nav ul {
   display: block;
   padding: 14px;
   list-style-type: none;
+  
 }
 #nav li {
   display: inline-block;
   margin-left: 30px;
   line-height: 30px;
+  vertical-align: top;
 }
 #nav input {
   margin-right: 30px;
-  color: rgb(2, 28, 46);
-  border: 1px solid gray;
+  color: rgb(158, 158, 158);
   font-size: 15px;
   font-weight: bold;
   border-radius: 5px;
+  padding-top: 10px;
+  width: 40%;
+  background-color: #ccc;
+  
 }
 #nav img {
   width: 28px;
   height: 28px;
+  margin-left: -13%;
+  margin-right: 20px;
+  cursor:pointer;
 }
 #nav a.router-link-exact-active {
   color: #ffffff;

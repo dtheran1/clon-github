@@ -10,46 +10,84 @@
         <span>Fecha de nacimiento</span><br />
         <span>Documentos</span>
       </p>
+
+      <button @click="getCookie">mostrar cookie</button>
     </div>
     <div class="form">
-      <form action="">
+      <form action="" @submit.prevent="formData">
         <h1>Inicia Sesión</h1>
         <div class="columns">
           <div class="field-container">
             <p>Nombre:</p>
             <i class="fas fa-user-circle"></i>
-            <input type="text" class="field" placeholder="Nombres" />
+            <input
+              required
+              type="text"
+              class="field"
+              placeholder="Nombres"
+              v-model="nombre"
+            />
           </div>
 
           <div class="field-container">
             <p>Apellidos:</p>
             <i class="fas fa-user-circle"></i>
-            <input type="text" class="field" placeholder="Apellidos" />
+            <input
+              required
+              type="text"
+              class="field"
+              placeholder="Apellidos"
+              v-model="apellido"
+            />
           </div>
         </div>
 
         <p>Número de CC:</p>
         <div class="field-container">
           <i class="fas fa-id-card"></i>
-          <input type="number" class="field" placeholder="Cedula" />
+          <input
+            required
+            type="number"
+            class="field"
+            placeholder="Cedula"
+            v-model="cc"
+          />
         </div>
 
         <p>Fecha de nacimiento:</p>
         <div class="field-container">
           <i class="fas fa-calendar-day"></i>
-          <input type="date" class="field" placeholder="Nombres" />
+          <input
+            required
+            type="date"
+            class="field"
+            placeholder="Nombres"
+            v-model="date"
+          />
         </div>
 
         <p>Email:</p>
         <div class="field-container">
           <i class="fas fa-at"></i>
-          <input type="email" class="field" placeholder="Email" />
+          <input
+            required
+            type="email"
+            class="field"
+            placeholder="Email"
+            v-model="email"
+          />
         </div>
 
         <p>UserName:</p>
         <div class="field-container">
           <i class="fas fa-user-check"></i>
-          <input type="text" class="field" placeholder="Usuario" />
+          <input
+            required
+            type="text"
+            class="field"
+            placeholder="Usuario"
+            v-model="username"
+          />
         </div>
         <p>
           <button type="submit">Iniciar Sesión</button>
@@ -59,7 +97,48 @@
   </div>
 </template>
 <script>
-export default {};
+import { onMounted } from '@vue/runtime-core';
+export default {
+  components: {},
+  data() {
+    return {
+      nombre: "",
+      apellido: "",
+      cc: "",
+      date: "",
+      email: "",
+      username: "",
+    };
+  },
+
+  methods: {
+    formData() {
+      let users = [];
+      let data = {
+        nombre: this.nombre,
+        apellido: this.apellido,
+        cc: this.cc,
+        date: this.date,
+        email: this.email,
+        username: this.username,
+      };
+      users.push(data);
+      Vue.$cookies.set("user", JSON.stringify(users));
+      this.nombre = "";
+      this.apellido = "";
+      this.cc = "";
+      this.date = "";
+      this.email = "";
+      this.username = "";
+    },
+     getCookie() {
+      let cook = $cookies.get("user");
+      cook = JSON.parse(cook);
+      cook = cook[0];
+      console.log(cook)
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -147,7 +226,7 @@ export default {};
   width: 50%;
 }
 
-.columns .field{
+.columns .field {
   width: 60%;
 }
 
